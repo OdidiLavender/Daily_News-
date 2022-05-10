@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    {{ super() }}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
+
+<body>  
+<div class="container-fluid" id= "sources"> 
+{% block content %}
+    <div style="margin-right: 15rem;">
+        <h2 class="text-center all">OUR NEWS SOURCES</h2>
+    </div>
+
+    <hr style="width: 79%; height: 10px; color: black; box-shadow: 5px solid black;">
+    <div class="col container">
+        <div class="row">
+            <!-- <div> -->
+                {% for all_news in general %}
+                <div class="col-md-3 m-2">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{all_news.name}}</h5>
+                                <p class="card-text tic">
+                                    {{all_news.description | truncate(60)}}
+                                </p>
+                                <a href="{{all_news.url}}"><button  type="button" class="btn btn-outline-danger" style="border-radius: 10px;" data-mdb-ripple-color="dark">View {{all_news.name}} Articles</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+                {% endfor %}
+            <!-- </div> -->
+         </div>
+    </div>
+{% endblock %} 
+</div>
+</body>
